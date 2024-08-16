@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getBlogById } from '../api';
 
 const BlogData = () => {
@@ -22,7 +22,7 @@ const BlogData = () => {
       <p>{blog.content}</p>
       <small>Topic: {blog.topic}</small>
       <br />
-      <small>By: {blog.author.username}</small>
+      <small>By: <Link to={`/author/${blog.author._id}`}>{blog.author.username}</Link></small>
       <br />
       <small>{blog.likes.length} Likes</small>
       <br />

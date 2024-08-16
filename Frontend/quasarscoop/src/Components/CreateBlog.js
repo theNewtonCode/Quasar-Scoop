@@ -1,23 +1,26 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { isAuthorized, createBlog } from '../api';
 
 const CreateBlog = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [topic, setTopic] = useState('');
   const [keywords, setKeywords] = useState('');
+  const [notification, setNotification] = useState(''); // State for notification
   const navigate = useNavigate();
+
+
+
+
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const token = localStorage.getItem('authToken');
-    if (!token) {
-      return navigate('/login');
-    }
-
     try {
+      if (isAuthorized()) {
       const newBlog = {
         title,
         content,
@@ -25,15 +28,21 @@ const CreateBlog = () => {
         keywords: keywords.split(',').map((keyword) => keyword.trim()), // Convert keywords into an array
       };
 
-      await axios.post('/api/blogs', newBlog, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      // Use the api instance to send a POST request
+      await createBlog(newBlog);
 
-      navigate('/'); // Redirect to homepage after successful blog creation
-    } catch (error) {
+      setNotification('Blog created successfully!'); // Set success notification
+
+      // Redirect to the homepage after a delay
+      setTimeout(() => {
+        navigate('/');
+      }, 3000);
+    } else{
+      navigate('/login');
+    }}
+    catch (error) {
       console.error('Error creating blog:', error);
+      setNotification('Failed to create blog. Please try again.'); // Set failure notification
     }
   };
 
@@ -79,6 +88,7 @@ const CreateBlog = () => {
         </div>
         <button type="submit">Create Blog</button>
       </form>
+      {notification && <p>{notification}</p>} {/* Display notification */}
     </div>
   );
 };
