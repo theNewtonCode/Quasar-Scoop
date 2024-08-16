@@ -1,0 +1,21 @@
+body{
+    background-image: url('./assets/digital-art-galaxy.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position-y: center; */
+    height: 200vh
+}
+.footer-text {
+    text-align: center;
+    color: #aaa; /* Light gray color */
+    font-size: 0.8em; /* Smaller font size */
+    margin-top: 50px; /* Space above */
+    margin-bottom: 20px; /* Space below */
+  }
+  
+@media (max-width: 768px) {
+    body{
+        height: 100vh;
+        background-position-x: center;
+    }
+}
