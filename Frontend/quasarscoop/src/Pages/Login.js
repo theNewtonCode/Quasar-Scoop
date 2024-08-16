@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import LoginHtml from '../Components/html and css/LoginHtml';
 
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const [formData, setFormData] = useState({ email: '', password: '' });
 
   const navigate = useNavigate();
@@ -30,9 +30,8 @@ const Login = () => {
       localStorage.setItem('token', token);
       localStorage.setItem('username', result.username);
       localStorage.setItem('userId', result._id);
-
-
-      navigate(`/user/${result._id}`);
+      onLogin(); // Notify parent component of successful login
+      navigate(`/`);
       alert('Login successful');
     } catch (error) {
       alert(error.response.data.message);
@@ -41,7 +40,7 @@ const Login = () => {
 
   return (<>
     <div>
-  <h1>LOGIN</h1>
+  <h1 className='SignHeading' >LOGIN</h1>
 </div>
 <LoginHtml handleChange={handleChange} handleSubmit={handleSubmit} />
 </>

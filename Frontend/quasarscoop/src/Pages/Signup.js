@@ -21,7 +21,7 @@ const Signup = () => {
 
   return (<>
 <div>
-  <h1>SIGNUP HERE</h1>
+  <h1 className='SignHeading'>SIGNUP HERE</h1>
 </div>
 <SignupHtml handleChange={handleChange} handleSubmit={handleSubmit}/>
 </>

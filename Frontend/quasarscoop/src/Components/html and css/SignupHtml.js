@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 export const SignupHtml = (props) => {
   return (
     <div className='form-outer'>
-      <form onSubmit={props.handleSubmit}>
-        <input
+      <form className='SignForm' onSubmit={props.handleSubmit}>
+        <input className='SignInput'
           type="text"
           name="username"
           placeholder="Username"
@@ -15,14 +15,14 @@ export const SignupHtml = (props) => {
           title="Username must start with a letter and be between 2 and 16 characters long."
           required
         />
-        <input
+        <input className='SignInput'
           type="email"
           name="email"
           placeholder="Email"
           onChange={props.handleChange}
           required
         />
-        <input
+        <input className='SignInput'
           type="password"
           name="password"
           placeholder="Password"
@@ -31,7 +31,7 @@ export const SignupHtml = (props) => {
           title="Password must be at least 6 characters long and contain at least one number and one special character."
           required
         />
-        <button type="submit">Signup</button>
+        <button className='SignButton' type="submit">Signup</button>
         <Link to="/" className="home-link">
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -1,9 +1,12 @@
 import React from 'react';
+import { Brand } from './Brand';
+import BlogList from './BlogList';
 
 const HomePage = () => {
   return (
     <div>
-      <h1>Welcome to the Astronomy Blog</h1>
+      <Brand />
+      <BlogList />
     </div>
   );
 };

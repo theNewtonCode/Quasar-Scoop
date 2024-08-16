@@ -2,26 +2,37 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../Components/html and css/Header.css';
 
-const Header = () => {
+import logo from '../assets/logo.svg'; // Import your logo
+
+const Header = ({ isAuthenticated, onLogout }) => {
+
   return (
-    <div className="navbar-container">
-      <nav className="navbar">
-        <ul className="navbar-menu">
-          <li className="navbar-item">
-            <Link to="/" className="navbar-link">Home</Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/signup" className="navbar-link">Signup</Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/login" className="navbar-link">Login</Link>
-          </li>
-        </ul>
+    <header className="header">
+      <div className="brand">
+        <Link to="/" className="logo">
+          <img src={logo} alt="Logo" className="logo-img" />
+          Quasar Scoop
+        </Link>
+      </div>
+      <nav className="nav">
+        <Link to="/blogs" className="nav-item">All Blogs</Link>
+        <Link to="/contact" className="nav-item">Contact</Link>
+        <Link to="/create-blog" className="nav-item">Create a Blog</Link>
+        <form className="search-form">
+          <input type="text" placeholder="Search by keyword..." className="search-input" />
+          <button type="submit" className="search-button">Search</button>
+        </form>
       </nav>
-      <div className="watermark">
-          <h2>Designed and Developed by <Link to={"https://github.com/theNewtonCode"}>theNewtonCode.</Link></h2>
-        </div>
-    </div>
+      <div className="auth">
+        {isAuthenticated ? (<>
+        
+          <Link to="/user/dashboard" className="nav-item">Profile</Link>
+          <button onClick={onLogout} className="auth-button">Logout</button></>
+        ) : (
+          <Link to="/login" className="auth-button">Login</Link>
+        )}
+      </div>
+    </header>
   );
 };
 

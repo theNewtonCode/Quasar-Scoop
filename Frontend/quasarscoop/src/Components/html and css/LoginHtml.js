@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 export default function LoginHtml(props) {
   return (
         <div className='form-outer'>
-        <form onSubmit={props.handleSubmit}>
-    <input type="email" name="email" placeholder="Email" onChange={props.handleChange} />
-    <input type="password" name="password" placeholder="Password" onChange={props.handleChange} />
-    <button type="submit">Login</button>
+        <form className='SignForm'  onSubmit={props.handleSubmit}>
+    <input className='SignInput' type="email" name="email" placeholder="Email" onChange={props.handleChange} />
+    <input className='SignInput' type="password" name="password" placeholder="Password" onChange={props.handleChange} />
+    <button className='SignButton' type="submit">Login</button>
     <Link to="/" className="home-link">
           <svg
             xmlns="http://www.w3.org/2000/svg"

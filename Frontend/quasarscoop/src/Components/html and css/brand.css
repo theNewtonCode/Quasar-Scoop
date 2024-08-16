@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+.brand-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 80vh; /* Full viewport height */
+    padding: 20px;
+  }
+  
+.brand-heading {
+    font-family: 'Patrick Hand', cursive;
+    margin-top: 0;
+    font-size: 6rem; /* Adjust the size to your preference */
+    font-weight: bold;
+    margin-bottom: 0; /* Remove margin between heading and description */
+    color: #ffffff;
+  }
+  
+  .brand-description {
+    font-size: 1.2rem;
+    margin-top: 0; /* Remove any gap above the description */
+    margin-bottom: 30px; /* Space between description and button */
+    color: #ffffff;
+  }
+  
+  .brand-button {
+    padding: 15px 40px;
+    font-size: 1rem;
+    border-radius: 50px; /* Makes both ends circular */
+    border: none;
+    background-color: #a4b9ff;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .brand-button:hover {
+    background-color: #968aff;
+  }
+  

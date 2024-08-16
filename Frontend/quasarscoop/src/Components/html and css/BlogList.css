@@ -1,0 +1,97 @@
+.blog-list-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    height: 80vh;
+    flex-wrap: wrap;
+  }
+  
+  .blog-list-content {
+    flex: 1;
+    margin: 0 20px;
+    text-align: center;
+    overflow-y: auto;
+    height: 80vh;
+    padding-top: 50px;
+  }
+  
+  .blog-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .blog-item {
+    background: #1c1c1cb6; /* Dark background for blog cards */
+    border-radius: 15px;
+    padding: 20px;
+    margin: 15px;
+    width: calc(40% - 40px); /* Three columns layout */
+    box-shadow: 0 4px 8px rgba(174, 174, 174, 0.682); /* Subtle white shadow */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-image: url('/path/to/your/stars-background.jpg'); Optional starry background image */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .blog-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+  }
+  
+  .blog-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .blog-item h3 {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #fff; /* Light text color */
+  }
+  
+  .blog-item p {
+    color: #ccc; /* Light gray text color */
+    margin-bottom: 15px;
+    flex: 1;
+  }
+  
+  .blog-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+    color: #aaa; /* Light gray for meta information */
+  }
+  
+  .blog-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .blog-actions svg {
+    color: #ff5722; /* Accent color for icons */
+  }
+  
+  .blog-likes, .blog-comments {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .blog-item small {
+    color: #888;
+  }
+  

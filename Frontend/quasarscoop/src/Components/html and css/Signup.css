@@ -1,4 +1,4 @@
-h1{
+.SignHeading{
     font-size:72px;
     text-align: center;
     background: -webkit-linear-gradient(left, #ff7df4,#d86666, #4a5cdf, rgb(42, 32, 157)
@@ -19,7 +19,7 @@ h1{
     backdrop-filter: blur(3px);
 }
 
-form {
+.SignForm  {
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -27,7 +27,7 @@ form {
     padding: 2rem;
   }
 
-  input{
+  .SignInput{
     width: 100%;
     background-color: rgba(255, 255, 255, 0)
     ;
@@ -40,17 +40,17 @@ form {
     transition: border-color 0.3s ease;
     color: white;
   }
-  input::placeholder{
+  .SignInput::placeholder{
     color: rgb(179, 179, 179);
   }
 
-  input:focus {
+  .SignInput:focus {
     border-color: #a6c0fe;
     box-shadow: 0 0 8px rgba(166, 192, 254, 0.5);
   }
 
  
-  button {
+  .SignButton {
     background-image: linear-gradient(to right, #ff7df4,#d86666, #4a5cdf, rgb(42, 32, 157)
     );
     margin: 10px;
@@ -66,7 +66,7 @@ form {
 
   }
 
-  button:hover {
+  .SignButton:hover {
     background-position: right center; 
     color: #fff;
     text-decoration: none;
