@@ -133,6 +133,8 @@ router.get('/search', async (req, res) => {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
+
+//delete a blog
 router.delete('/:id', authMiddleware, async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
@@ -148,7 +150,7 @@ router.delete('/:id', authMiddleware, async (req, res) => {
     }
 
     // Delete the blog
-    await blog.remove();
+    await Blog.findByIdAndDelete(req.params.id);
 
     res.status(200).json({ message: 'Blog deleted successfully' });
   } catch (error) {
