@@ -100,6 +100,11 @@
     text-decoration: none;
     font-weight: bold;
     transition: background-color 0.3s;
+    margin-left: 5px;
+  }
+
+  .signup-button{
+    background-color: #ffd500d0;
   }
   
   .auth-button:hover {

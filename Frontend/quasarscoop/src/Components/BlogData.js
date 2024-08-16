@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getBlogById } from '../api';
+import { getBlogById, base_url } from '../api';
 import '../Components/html and css/BlogData.css'; // Import the CSS file for styling
 
 const BlogData = () => {
@@ -20,10 +20,52 @@ const BlogData = () => {
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
-    // Add logic to submit the new comment
-    console.log("New comment submitted:", newComment);
-    // Clear the comment input
-    setNewComment('');
+    try {
+      const response = await fetch(`${base_url}/blogs/comment/${id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`, // Include the token for protected routes
+        },
+        body: JSON.stringify({ content: newComment }),
+      });
+
+      if (response.ok) {
+        const newCommentData = await response.json();
+        setBlog((prevBlog) => ({
+          ...prevBlog,
+          comments: [...prevBlog.comments, newCommentData],
+        }));
+        setNewComment(''); // Clear the comment input after submission
+      } else {
+        console.error('Failed to add comment');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+
+  const handleLike = async () => {
+    try {
+      const response = await fetch(`${base_url}/blogs/${id}/like`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        
+      });
+      if (response.ok) {
+        const updatedData = await response.json();
+        // Update the likes count based on the length of the returned array
+        setBlog((prevBlog) => ({
+          ...prevBlog,
+          likes: updatedData.likes,
+        }));}
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   if (!blog) return <div className="loading">Loading...</div>;
@@ -32,15 +74,17 @@ const BlogData = () => {
     <div className="blog-container">
       <div className="blog-content">
         <h1 className="blog-title">{blog.title}</h1>
-        <p className="blog-text">{blog.content}</p>
-        <div className="blog-meta">
-          <small className="blog-topic">Topic: {blog.topic}</small>
+        <div className="blog-meta-2">
+        <small className="blog-topic">Topic: {blog.topic}</small>
           <small className="blog-author">
-            By: <Link to={`/author/${blog.author._id}`} className="author-link">{blog.author.username}</Link>
+            Author: <Link to={`/author/${blog.author._id}`} className="author-link">{blog.author.username}↗</Link>
           </small>
-          <div className="blog-actions">
-            <button className="like-button">Like {blog.likes.length}</button>
           </div>
+        <p className="blog-text">{blog.content}</p>
+        
+          <div className="blog-actions">
+            <button className="like-button" onClick={handleLike}>Like {blog.likes.length}</button>
+          
         </div>
         <div className="comments-section">
           <h2 className="comments-title">Comments</h2>

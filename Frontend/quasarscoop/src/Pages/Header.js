@@ -4,7 +4,7 @@ import '../Components/html and css/Header.css';
 
 import logo from '../assets/logo.svg'; // Import your logo
 
-const Header = ({ isAuthenticated, onLogout }) => {
+const Header = ({ isAuthenticated, onLogout, username }) => {
 
   return (
     <header className="header">
@@ -26,10 +26,11 @@ const Header = ({ isAuthenticated, onLogout }) => {
       <div className="auth">
         {isAuthenticated ? (<>
         
-          <Link to="/user/dashboard" className="nav-item">Profile</Link>
+          <Link to="/user/dashboard" className="nav-item">{username}</Link>
           <button onClick={onLogout} className="auth-button">Logout</button></>
-        ) : (
+        ) : (<>
           <Link to="/login" className="auth-button">Login</Link>
+          <Link to="/Signup" className="auth-button signup-button">Signup</Link></>
         )}
       </div>
     </header>

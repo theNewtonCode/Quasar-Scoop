@@ -18,6 +18,8 @@ function App() {
   useEffect(() => {
     // Check if there's a token in localStorage
     const token = localStorage.getItem('token');
+    
+    
     if (token) {
       setIsAuthenticated(true);
     }
@@ -37,7 +39,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header isAuthenticated={isAuthenticated} onLogout={handleLogout} />
+        <Header isAuthenticated={isAuthenticated} onLogout={handleLogout} username={localStorage.getItem('username')} />
         
         <Routes>
           <Route path="/" element={<Home />} />
