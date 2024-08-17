@@ -190,4 +190,17 @@ router.put('/:id', authMiddleware, async (req, res) => {
   }
 });
 
+//fetch all blogs by a user:
+router.get('/author/:authorId', async (req, res) => {
+  try {
+    const blogs = await Blog.find({ author: req.params.authorId })
+      .populate('author', 'username')
+      .sort({ createdAt: -1 }); // Optionally, sort by newest first
+    res.json(blogs);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
 module.exports = router;

@@ -11,9 +11,15 @@
     flex: 1;
     margin: 0 20px;
     text-align: center;
-    overflow-y: auto;
+    overflow-y: scroll;
     height: 80vh;
     padding-top: 50px;
+    scrollbar-width: none; /* For Firefox */
+  }
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .blog-list-content::-webkit-scrollbar {
+    display: none;
   }
   
   .blog-list {
@@ -58,8 +64,10 @@
     font-family: 'Patrick Hand', cursive;
     font-size: 1.2em;
     margin-bottom: 10px;
-    color: #fff; /* Light text color */
+    color: #ffffff; /* Light text color */
+    text-decoration: none;
   }
+
   
   .blog-item p {
     color: #ccc; /* Light gray text color */
@@ -94,4 +102,23 @@
   .blog-item small {
     color: #888;
   }
+  .blog-item h3 a {
+    text-decoration: none;
+    color: #ff5722;
+  }
   
+  .blog-item h3 a:hover {
+    text-decoration: none;
+    
+    color: #ff5722;
+  }
+  
+  /* You can also explicitly remove underline on all links within blog items */
+  .blog-item a {
+    text-decoration: none;
+  }
+  
+  .blog-item a:hover {
+    text-decoration: none;
+      color: #ff5722;
+  }

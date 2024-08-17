@@ -1,10 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { base_url } from '../api';
+import { Link, useNavigate } from 'react-router-dom';
 import '../Components/html and css/Header.css';
 
 import logo from '../assets/logo.svg'; // Import your logo
 
 const Header = ({ isAuthenticated, onLogout, username }) => {
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const navigate = useNavigate();
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    if (searchKeyword.trim()) {
+      // Redirect to search results page with the keyword as query parameter
+      navigate(`${base_url}/search?keyword=${encodeURIComponent(searchKeyword)}`);
+    }
+  };
 
   return (
     <header className="header">
@@ -18,8 +28,14 @@ const Header = ({ isAuthenticated, onLogout, username }) => {
         <Link to="/blogs" className="nav-item">All Blogs</Link>
         <Link to="/contact" className="nav-item">Contact</Link>
         <Link to="/create-blog" className="nav-item">Create a Blog</Link>
-        <form className="search-form">
-          <input type="text" placeholder="Search by keyword..." className="search-input" />
+        <form className="search-form" onSubmit={handleSearch}>
+          <input
+            type="text"
+            placeholder="Search by keyword..."
+            className="search-input"
+            value={searchKeyword}
+            onChange={(e) => setSearchKeyword(e.target.value)}
+          />
           <button type="submit" className="search-button">Search</button>
         </form>
       </nav>

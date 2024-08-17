@@ -63,3 +63,25 @@ export const deleteBlog = async (id) => {
   const response = await axios.delete(`${API_URL}/${id}`, getAuthHeaders());
   return response.data;
 };
+
+
+export const searchBlogs = async (keyword) => {
+  const response = await fetch(`${base_url}/search?keyword=${encodeURIComponent(keyword)}`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch search results');
+  }
+  return response.json();
+};
+
+// Fetch user details by username
+export const getUserProfile = async (username) => {
+  const response = await axios.get(`${base_url}/users/${username}`, getAuthHeaders());
+  return response.data;
+};
+
+// Fetch blogs by author ID
+export const getBlogsByAuthor = async (authorId) => {
+  const response = await axios.get(`${base_url}/blogs/author/${authorId}`, getAuthHeaders());
+  return response.data;
+};
+

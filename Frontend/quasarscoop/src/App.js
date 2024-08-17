@@ -11,6 +11,7 @@ import BlogData from './Components/BlogData';
 import AuthorProfile from './Components/AuthorProfile';
 import Header from './Pages/Header';
 import Home from './Components/Home';
+import searchBlogs from './Components/searchBlogs'
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -44,6 +45,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blogs/:id" element={<BlogData />} />
+          <Route path="/search" element={<searchBlogs />} />
           <Route path="/login" element={<Login onLogin={handleLogin}/>} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/user/:id" element={<UserPage />} />

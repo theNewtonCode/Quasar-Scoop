@@ -7,6 +7,7 @@ const BlogData = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
   const [newComment, setNewComment] = useState('');
+  const [showSpringPopup, setShowSpringPopup] = useState(false); // New state for spring popup
   
   useEffect(() => {
     const fetchBlog = async () => {
@@ -63,6 +64,11 @@ const BlogData = () => {
           ...prevBlog,
           likes: updatedData.likes,
         }));}
+        setShowSpringPopup(true);
+
+      setTimeout(() => {
+        setShowSpringPopup(false); // Hide spring popup after 2 seconds
+      }, 2000);
     } catch (error) {
       console.error('Error:', error);
     }
@@ -71,6 +77,7 @@ const BlogData = () => {
   if (!blog) return <div className="loading">Loading...</div>;
 
   return (
+    <>
     <div className="blog-container">
       <div className="blog-content">
         <h1 className="blog-title">{blog.title}</h1>
@@ -106,6 +113,8 @@ const BlogData = () => {
         </div>
       </div>
     </div>
+    {showSpringPopup && <div className="spring-popup-like"></div>}
+    </>
   );
 };
 
