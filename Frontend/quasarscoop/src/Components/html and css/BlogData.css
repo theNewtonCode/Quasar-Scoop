@@ -1,4 +1,7 @@
-
+@keyframes float-blog{
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
 
 .blog-container {
   padding: 2rem;
@@ -8,6 +11,7 @@
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); /* Subtle glow effect */
   backdrop-filter: blur(10px); /* Glass effect */
+  animation: float-blog 3s ease-in-out infinite;
 }
 
 .blog-content {
@@ -124,6 +128,8 @@
   border-radius: 50px;
   transition: background 0.3s;
   box-shadow: 0 0 10px rgba(111, 111, 200, 0.5);
+  width:fit-content;
+  margin-left: 10px;
 }
 
 .submit-button:hover {
@@ -148,8 +154,8 @@
   background: url('../css\ images/heart-icon.png') no-repeat center center / cover;
   animation: spring 0.5s ease forwards, fadeOut 0.5s ease 1s forwards;
   z-index: 10000;
-  height: 150px;
-  width: 150px;
+  height: 80px;
+  width: 80px;
 }
 
 @keyframes spring {

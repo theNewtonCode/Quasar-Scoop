@@ -1,18 +1,39 @@
 /* src/components/Header.css */
-
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #111;
-    color: #eee;
-    padding: 15px 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    transition: background-color 0.3s;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111;
+  color: #eee;
+  padding: 15px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s;
+  overflow: hidden; /* Important for containing the stars */
+}
+
+/* Star Animation Styles */
+.star {
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  border-radius: 100%;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  opacity: 0.8;
+}
+
+@keyframes move_right {
+  from { transform: rotate(0deg) translateX(8px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(8px) rotate(-360deg); }
+}
+
+@keyframes move_left {
+  from { transform: rotate(0deg) translateX(8px) rotate(0deg); }
+  to { transform: rotate(-360deg) translateX(8px) rotate(360deg); }
+}
   
   .header:hover {
     background-color: #222;
@@ -134,4 +155,7 @@
       flex: 1;
     }
   }
+  
+
+  /* stars animation */
   

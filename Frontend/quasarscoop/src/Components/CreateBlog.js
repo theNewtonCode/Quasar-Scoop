@@ -21,8 +21,8 @@ const CreateBlog = () => {
         const newBlog = {
           title,
           content,
-          topic,
-          keywords: keywords.split(',').map((keyword) => keyword.trim()), // Convert keywords into an array
+          topic: topic.toUpperCase(), // Convert topic to uppercase
+          keywords: keywords.split(',').map((keyword) => keyword.trim().toUpperCase()), // Convert keywords to uppercase and into an array
         };
 
         await createBlog(newBlog);

@@ -2,7 +2,7 @@ import React from 'react';
 import '../Components/html and css/Menu.css';
 
 const TopicsMenu = ({ onTopicClick }) => {
-  const topics = ['sun', 'nebula', 'Programming', 'Web Development', 'Science'];
+  const topics = ['All','sun', 'nebula', 'Programming', 'Web Development', 'Science'];
 
   return (
     <div className="menu-container topics-menu">

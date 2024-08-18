@@ -24,15 +24,23 @@ const BlogList = () => {
   const handleKeywordClick = (keyword) => {
     setSelectedKeyword(keyword);
     setSelectedTopic(''); // Clear topic filter when a keyword is selected
-    const filtered = blogs.filter((blog) => blog.keywords.includes(keyword));
-    setFilteredBlogs(filtered);
+    if (keyword === 'ALL') {
+      setFilteredBlogs(blogs); // Show all blogs if 'All' is selected
+    } else {
+      const filtered = blogs.filter((blog) => blog.keywords.includes(keyword));
+      setFilteredBlogs(filtered);
+    }
   };
 
   const handleTopicClick = (topic) => {
     setSelectedTopic(topic);
     setSelectedKeyword(''); // Clear keyword filter when a topic is selected
-    const filtered = blogs.filter((blog) => blog.topic === topic);
-    setFilteredBlogs(filtered);
+    if (topic === 'All') {
+      setFilteredBlogs(blogs); // Show all blogs if 'All' is selected
+    } else {
+      const filtered = blogs.filter((blog) => blog.topic === topic);
+      setFilteredBlogs(filtered);
+    }
   };
 
   return (
