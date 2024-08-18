@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../Components/html and css/Header.css';
 
 import logo from '../assets/logo.svg'; // Import your logo
+import profileIcon from '../assets/profile-icon.png';
 
 const Header = ({ isAuthenticated, onLogout, username }) => {
   const [searchKeyword, setSearchKeyword] = useState('');
@@ -77,7 +78,7 @@ const Header = ({ isAuthenticated, onLogout, username }) => {
       </nav>
       <div className="auth">
         {isAuthenticated ? (
-          <>
+          <><img src={profileIcon} alt="" className='profile-icon-image'/>
             <Link to="/user/dashboard" className="nav-item">{username}</Link>
             <button onClick={onLogout} className="auth-button">Logout</button>
           </>

@@ -105,6 +105,14 @@
   .search-button:hover {
     background-color: #555;
   }
+
+  .profile-icon-image{
+    height: 30px;
+    width: 30px;
+    border: 2px solid rgb(255, 242, 144);
+    padding: 2px;
+    border-radius: 30px;
+  }
   
   .auth {
     display: flex;
