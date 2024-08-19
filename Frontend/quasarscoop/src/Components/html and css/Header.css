@@ -5,8 +5,8 @@
   align-items: center;
   background-color: #111;
   color: #eee;
-  padding: 15px 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  padding: 11px 20px;
+  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.5);
   position: sticky;
   top: 0;
   z-index: 1000;

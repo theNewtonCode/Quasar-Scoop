@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getUserProfile, getBlogsByAuthor, deleteBlog } from '../api';
 import { FaTrash } from 'react-icons/fa';
+import edit from '../assets/edit.svg';
 import '../Components/html and css/AuthorProfile.css';
 
 const AuthorProfile = () => {
@@ -14,6 +15,11 @@ const AuthorProfile = () => {
   const [showSpringPopup, setShowSpringPopup] = useState(false); // New state for spring popup
   const loggedInUsername = localStorage.getItem('username');
   const navigate = useNavigate();
+
+  const handleEdit = () => {
+    // Remove token and update authentication state
+    navigate('/edit-profile');
+  };
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -73,11 +79,14 @@ const AuthorProfile = () => {
   return (
     <>
       <div className="profile-container">
-        <h1>{user.username}</h1>
+        <h1 id='h1-author-profile'>{user.username}{loggedInUsername === user.username && (
+                  <button onClick={handleEdit} className='edit-button'>
+                    <img src={edit} alt="edit" className="edit-img" />edit</button>
+                )}</h1>
         <p>Email: {user.email}</p>
         <p>Joined: {new Date(user.createdAt).toLocaleDateString()}</p>
 
-        <h2>Posts by {user.username}</h2>
+        <h2 id='h2-author-profile'>Posts by {user.username}</h2>
         <div className="posts">
           <ul className="posts-list">
             {posts.map((post) => (

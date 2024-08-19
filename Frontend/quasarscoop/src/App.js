@@ -33,6 +33,8 @@ function App() {
   const handleLogout = () => {
     // Remove token and update authentication state
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('userId');
     setIsAuthenticated(false);
   };
 

@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { isAuthorized, createBlog } from '../api';
 import '../Components/html and css/CreateBlog.css'; // Link the new CSS file for styling
-import Quill from 'quill';
-import 'quill/dist/quill.snow.css'; 
 
 const CreateBlog = () => {
   const [title, setTitle] = useState('');
@@ -81,7 +79,8 @@ const CreateBlog = () => {
             required
           />
         </div>
-        <button type="submit" className="submit-button">Create Blog</button>
+        <button type="submit" className="submit-button">Post Blog</button>
+        <button type="button" className="submit-button">Home</button>
       </form>
       {notification && <p className="notification">{notification}</p>} {/* Display notification */}
     </div>

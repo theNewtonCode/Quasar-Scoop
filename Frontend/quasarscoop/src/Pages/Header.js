@@ -10,6 +10,12 @@ const Header = ({ isAuthenticated, onLogout, username }) => {
   const [searchKeyword, setSearchKeyword] = useState('');
   const navigate = useNavigate();
 
+  const Logout = () => {
+    // Remove token and update authentication state
+    onLogout();
+    navigate('/login');
+  };
+
   useEffect(() => {
     const number_of_stars = 100;
 
@@ -79,8 +85,8 @@ const Header = ({ isAuthenticated, onLogout, username }) => {
       <div className="auth">
         {isAuthenticated ? (
           <><img src={profileIcon} alt="" className='profile-icon-image'/>
-            <Link to="/user/dashboard" className="nav-item">{username}</Link>
-            <button onClick={onLogout} className="auth-button">Logout</button>
+            <Link to={`/author/${localStorage.getItem('userId')}`} className="nav-item">{username}</Link>
+            <button onClick={Logout} className="auth-button">Logout</button>
           </>
         ) : (
           <>

@@ -1,7 +1,7 @@
 .SignHeading{
     font-size:72px;
     text-align: center;
-    background: -webkit-linear-gradient(left, #ff7df4,#d86666, #4a5cdf, rgb(42, 32, 157)
+    background: -webkit-linear-gradient(left, #a4ff7d,#d86666, #4a5cdf, rgb(42, 32, 157)
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -9,7 +9,7 @@
 
 .form-outer{
     width: min(550px, 90%);
-    background-color: rgba(95, 95, 95, 0.22);
+    background-color: rgba(0, 0, 0, 0.233);
     display: flex;
     align-items: center;
     justify-content: center;
