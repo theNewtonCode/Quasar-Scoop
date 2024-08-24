@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getTopBlogs } from '../api';
 import { Link } from 'react-router-dom';
-import KeywordsMenu from './KeywordMenu';
-import TopicsMenu from './TopicsMenu';
+import KeywordsMenu from '../Components/KeywordMenu';
+import TopicsMenu from '../Components/TopicsMenu';
 import '../Components/html and css/BlogList.css';
 import { FaHeart, FaComment } from 'react-icons/fa'; // Importing icons from react-icons
 

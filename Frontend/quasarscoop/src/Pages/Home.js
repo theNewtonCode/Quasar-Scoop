@@ -1,6 +1,6 @@
 import React from 'react';
 import { Brand } from './Brand';
-import BlogList from './BlogList';
+import BlogList from '../Pages/BlogList';
 
 const HomePage = () => {
   return (
