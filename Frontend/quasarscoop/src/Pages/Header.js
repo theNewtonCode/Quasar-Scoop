@@ -9,6 +9,8 @@ import profileIcon from '../assets/profile-icon.png';
 const Header = ({ isAuthenticated, onLogout, username }) => {
   const [searchKeyword, setSearchKeyword] = useState('');
   const navigate = useNavigate();
+  
+  
 
   const Logout = () => {
     // Remove token and update authentication state
@@ -51,11 +53,10 @@ const Header = ({ isAuthenticated, onLogout, username }) => {
     };
   }, []);
 
-  const handleSearch = async (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
     if (searchKeyword.trim()) {
-      // Redirect to search results page with the keyword as query parameter
-      navigate(`${base_url}/search?keyword=${encodeURIComponent(searchKeyword)}`);
+      navigate(`/?keyword=${encodeURIComponent(searchKeyword)}#blog-list-section`);
     }
   };
 
@@ -68,9 +69,10 @@ const Header = ({ isAuthenticated, onLogout, username }) => {
         </Link>
       </div>
       <nav className="nav">
-        <Link to="/blogs" className="nav-item">All Blogs</Link>
+      <Link to="/create-blog" className="nav-item">Create a Blog</Link>
+        <Link to="/#blog-list-section" className="nav-item">All Authors</Link>
         <Link to="/contact" className="nav-item">Contact</Link>
-        <Link to="/create-blog" className="nav-item">Create a Blog</Link>
+
         <form className="search-form" onSubmit={handleSearch}>
           <input
             type="text"
