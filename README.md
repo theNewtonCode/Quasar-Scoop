@@ -150,7 +150,7 @@ The project requires the following environment variables:
 ![Homepage](./screenshots/home.png)
 
 ### Blog View
-![Blog View](./screenshots/blog.png)
+![Blog View](./screenshots/blogs.png)
 
 ## License
 
