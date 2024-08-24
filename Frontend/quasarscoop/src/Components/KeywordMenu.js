@@ -2,14 +2,14 @@ import React from 'react';
 import '../Components/html and css/Menu.css';
 
 const KeywordsMenu = ({ onKeywordClick }) => {
-  const keywords = ['sun', 'nebula', 'CSS', 'Node.js', 'MongoDB', 'sun', 'nebula', 'CSS', 'Node.js', 'MongoDB', 'sun', 'nebula', 'CSS', 'Node.js', 'MongoDB'];
+  const keywords = ['All', 'Sun', 'Nebula', 'Star', 'Black Hole', 'Gravity', 'Light'];
 
   return (
     <div className="menu-container keywords-menu">
       <h3>Keywords</h3>
       <ul>
         {keywords.map((keyword, index) => (
-          <li key={index} onClick={() => onKeywordClick(keyword)}>
+          <li key={index} onClick={() => onKeywordClick(keyword.toUpperCase())}>
             {keyword}
           </li>
         ))}

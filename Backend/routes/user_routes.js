@@ -3,6 +3,7 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
+const authMiddleware = require('../middleware/auth');
 const isValidRenownedEmail = require('./email_validation');
 const router = express.Router();
 
@@ -55,8 +56,8 @@ router.post('/login', async (req, res) => {
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
     if (!isPasswordCorrect) return res.status(400).json({ message: "Invalid credentials" });
 
-    const token = jwt.sign({ email: user.email, id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    console.log(token);
+    const token = jwt.sign({ email: user.email, id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
+    // console.log(token);
 
     // Save session information
     req.session.userId = user._id;
@@ -70,9 +71,8 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', authMiddleware, async (req, res) => {
   const { id } = req.params;
-
   try {
     const user = await User.findById(id).select('-password'); // Exclude password
     if (!user) return res.status(404).json({ message: 'User not found' });
@@ -82,5 +82,6 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
+
 
 module.exports = router;

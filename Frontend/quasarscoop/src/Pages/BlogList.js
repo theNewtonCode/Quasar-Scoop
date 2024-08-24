@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { getTopBlogs } from '../api';
 import { Link } from 'react-router-dom';
-import KeywordsMenu from './KeywordMenu';
-import TopicsMenu from './TopicsMenu';
+import KeywordsMenu from '../Components/KeywordMenu';
+import TopicsMenu from '../Components/TopicsMenu';
 import '../Components/html and css/BlogList.css';
-import { FaHeart, FaComment } from 'react-icons/fa'; // Importing icons from react-icons
+import { FaHeart, FaComment } from 'react-icons/fa';
 
-const BlogList = () => {
+const BlogList = ({ searchTerm }) => {
   const [blogs, setBlogs] = useState([]);
   const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [selectedKeyword, setSelectedKeyword] = useState('');
@@ -21,18 +21,38 @@ const BlogList = () => {
     fetchBlogs();
   }, []);
 
+  useEffect(() => {
+    let filtered = blogs;
+
+    if (selectedKeyword && selectedKeyword !== 'ALL') {
+      filtered = filtered.filter((blog) =>
+        blog.keywords.includes(selectedKeyword)
+      );
+    }
+
+    if (selectedTopic && selectedTopic !== 'All') {
+      filtered = filtered.filter((blog) => blog.topic === selectedTopic);
+    }
+
+    if (searchTerm) {
+      filtered = filtered.filter(
+        (blog) =>
+          blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          blog.content.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    setFilteredBlogs(filtered);
+  }, [selectedKeyword, selectedTopic, searchTerm, blogs]);
+
   const handleKeywordClick = (keyword) => {
     setSelectedKeyword(keyword);
     setSelectedTopic(''); // Clear topic filter when a keyword is selected
-    const filtered = blogs.filter((blog) => blog.keywords.includes(keyword));
-    setFilteredBlogs(filtered);
   };
 
   const handleTopicClick = (topic) => {
     setSelectedTopic(topic);
     setSelectedKeyword(''); // Clear keyword filter when a topic is selected
-    const filtered = blogs.filter((blog) => blog.topic === topic);
-    setFilteredBlogs(filtered);
   };
 
   return (
@@ -44,7 +64,7 @@ const BlogList = () => {
             {filteredBlogs.map((blog) => (
               <li key={blog._id} className="blog-item">
                 <Link to={`/blogs/${blog._id}`}>
-                <h3 style={{ textTransform: 'uppercase' }}>{blog.title}</h3>
+                  <h3 style={{ textTransform: 'uppercase' }}>{blog.title}</h3>
                 </Link>
                 <p>{blog.content.substring(0, 100)}...</p>
                 <div className="blog-meta">

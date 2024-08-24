@@ -1,0 +1,200 @@
+  
+  .profile-container {
+    font-family: 'Poppins', sans-serif;
+    /* background: rgba(164, 164, 164, 0.1); */
+    background: rgba(15, 15, 60, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); /* Subtle glow 
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(156, 156, 156, 0.2); */
+    padding: 2rem;
+    width: 90%;
+    max-width: 1000px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 5vh auto;
+  }
+  
+  #h1-author-profile{
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px #6f6fc8, 0 0 20px #6f6fc8; 
+  }
+  #h2-author-profile{
+    margin-top: 2rem;
+    color: whitesmoke;
+  }
+  .edit-button{
+    background-color: transparent;
+    border: none;
+    margin-left: 10px;
+    color: rgba(200, 200, 39, 0.65);
+    font-size: medium;
+    cursor: pointer;
+  }
+  
+  p {
+    font-size: 1rem;
+    color: #b0b0c8;
+    margin-bottom: 0.2rem;
+  }
+  
+  .posts {
+    margin-top: 2rem;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 1rem;
+    scrollbar-width: none; /* For Firefox */
+  }
+  .posts-list{
+    border-radius: 40px;
+  }
+  
+  .post-item {
+    margin: 0;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+  }
+  .posts-list::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .post-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* .post-content {
+    max-width: 80%;
+  } */
+  
+  .post-content h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #ffffff;
+  }
+  
+  .post-content p {
+    margin: 0.5rem 0;
+    color: #000000;
+  }
+  .post-content a{
+    text-decoration: none;
+    color: rgb(255, 170, 0);
+    
+  }
+  
+  .delete-button {
+    background-color: transparent;
+    border: none;
+    color: #ff6b6b;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .delete-button:hover {
+    color: #ff3b3b;
+  }
+  
+  .icon {
+    margin-left: 0.5rem;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  .modal {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    border-radius: 12px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+  }
+  
+  .modal h3 {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+  }
+  
+  .modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5rem;
+  }
+  
+  .modal-button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .modal-button:hover {
+    background-color: #ff3b3b;
+  }
+  
+
+  .spring-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    padding: 1rem 2rem;
+    background: url('../css\ images/Astronaut-delete.png') no-repeat center center / contain;
+    animation: spring 0.5s ease forwards, fadeOut 0.5s ease 1s forwards;
+    z-index: 10000;
+    height: 150px;
+    width: 150px;
+  }
+  
+  @keyframes spring {
+    0% {
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  

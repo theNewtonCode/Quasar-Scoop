@@ -22,9 +22,9 @@ app.use('/api/users', userRoutes);
 app.use('/api/blogs', blogRoutes);
 
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+// app.get('/', (req, res) => {
+//   res.send('Hello World!');
+// });
 
 
 

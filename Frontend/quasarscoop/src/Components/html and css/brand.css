@@ -8,7 +8,13 @@
     height: 80vh; /* Full viewport height */
     padding: 20px;
   }
-  
+
+  @keyframes float-heading {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+
 .brand-heading {
     font-family: 'Patrick Hand', cursive;
     margin-top: 0;
@@ -16,27 +22,63 @@
     font-weight: bold;
     margin-bottom: 0; /* Remove margin between heading and description */
     color: #ffffff;
+    animation: float-heading 3s ease-in-out infinite;
   }
   
   .brand-description {
     font-size: 1.2rem;
     margin-top: 0; /* Remove any gap above the description */
     margin-bottom: 30px; /* Space between description and button */
-    color: #ffffff;
+    color: #e8e8e8;
+    animation: float-heading 4s ease-in-out infinite;
+    font-family: cursive;
   }
   
   .brand-button {
-    padding: 15px 40px;
-    font-size: 1rem;
-    border-radius: 50px; /* Makes both ends circular */
-    border: none;
-    background-color: #a4b9ff;
-    color: rgb(0, 0, 0);
+    background-color: #ffffff00;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    border: none;
+    /* animation: float-button 3s cubic-bezier(0.25, 0.1, 0.25, 1) infinite; */
+    
+  }
+  .brand-button:hover{
+    animation: shake 0.5s ease-in-out infinite alternate;
+  }
+  @keyframes shake {
+    0% { transform: translateY(0); }
+    20% { transform: translateY(-2px) rotate(-1deg); }
+    40% { transform: translateY(2px) rotate(1deg); }
+    60% { transform: translateY(-2px) rotate(-1deg); }
+    80% { transform: translateY(2px) rotate(1deg); }
+    100% { transform: translateY(0); }
+  }
+
+  .rocket-icon {
+    width: 200px;
+    height: 100px;
+    background-image: url('../css\ images/rocket-btn.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.5)) drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+  }
+  .rocket-icon:hover{
+    filter: drop-shadow(6px 6px 8px rgba(0, 0, 0, 0.6)) drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.4));
   }
   
-  .brand-button:hover {
-    background-color: #968aff;
+  @keyframes flyAway {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(55vw);
+      opacity: 0;
+    }
+  }
+  
+  .fly-away {
+    animation: flyAway 1s ease forwards;
   }
   

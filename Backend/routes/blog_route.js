@@ -70,6 +70,43 @@ router.get('/', async (req, res) => {
 });
 
 
+router.get('/authors', async (req, res) => {
+  try {
+    const authors = await Blog.aggregate([
+      {
+        $group: {
+          _id: "$author", // This groups the blogs by the author's ID
+          blogCount: { $sum: 1 } // Counts the number of blogs per author
+        }
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "_id", // The grouped _id is the author's ID
+          foreignField: "_id", // Match it with the User's _id
+          as: "authorDetails"
+        }
+      },
+      {
+        $unwind: "$authorDetails" // Flatten the authorDetails array
+      },
+      {
+        $project: {
+          _id: "$_id", // Include the author's ID in the final output
+          author: "$authorDetails.username", // Include the author's username
+          blogCount: 1 // Include the blog count
+        }
+      }
+    ]);
+
+    res.json(authors);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
+
 // Get a single blog by ID
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
@@ -189,5 +226,19 @@ router.put('/:id', authMiddleware, async (req, res) => {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
+
+//fetch all blogs by a user:
+router.get('/author/:authorId', async (req, res) => {
+  try {
+    const blogs = await Blog.find({ author: req.params.authorId })
+      .populate('author', 'username')
+      .sort({ createdAt: -1 }); // Optionally, sort by newest first
+    res.json(blogs);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
 
 module.exports = router;
