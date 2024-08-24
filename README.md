@@ -147,13 +147,10 @@ The project requires the following environment variables:
 ## Screenshots
 
 ### Homepage
-![Homepage](./screenshots/homepage.png)
+![Homepage](./screenshots/home.png)
 
 ### Blog View
-![Blog View](./screenshots/blog-view.png)
-
-### Author Profile
-![Author Profile](./screenshots/author-profile.png)
+![Blog View](./screenshots/blog.png)
 
 ## License
 
