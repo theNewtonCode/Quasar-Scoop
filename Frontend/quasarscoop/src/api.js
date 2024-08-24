@@ -85,3 +85,8 @@ export const getBlogsByAuthor = async (authorId) => {
   return response.data;
 };
 
+
+export const getAuthorsWithBlogCount = async () => {
+  const response = await axios.get(`${base_url}/blogs/authors`, getAuthHeaders());
+  return response.data;
+};

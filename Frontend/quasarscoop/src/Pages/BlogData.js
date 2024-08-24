@@ -108,7 +108,7 @@ const BlogData = () => {
               rows="4"
               required
             />
-            <button type="submit" className="submit-button">Submit</button>
+            <button type="submit" className="submit-button">Send</button>
           </form>
         </div>
       </div>

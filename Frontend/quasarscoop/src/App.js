@@ -8,6 +8,7 @@ import BlogData from './Pages/BlogData';
 import AuthorProfile from './Pages/AuthorProfile';
 import Header from './Pages/Header';
 import Home from './Pages/Home';
+import { Authors } from './Pages/Authors';
 // import searchBlogs from './Components/searchBlogs'
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/Authors" element={<Authors />} />
           <Route path="/blogs/:id" element={<BlogData />} />
           <Route path="/search" element={<searchBlogs />} />
           <Route path="/login" element={<Login onLogin={handleLogin}/>} />

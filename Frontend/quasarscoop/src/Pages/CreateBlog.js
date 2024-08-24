@@ -29,7 +29,7 @@ const CreateBlog = () => {
         // Redirect to the homepage after a delay
         setTimeout(() => {
           navigate('/');
-        }, 3000);
+        }, 1000);
       } else {
         navigate('/login');
       }

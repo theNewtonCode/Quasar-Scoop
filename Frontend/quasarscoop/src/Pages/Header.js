@@ -70,7 +70,7 @@ const Header = ({ isAuthenticated, onLogout, username }) => {
       </div>
       <nav className="nav">
       <Link to="/create-blog" className="nav-item">Create a Blog</Link>
-        <Link to="/#blog-list-section" className="nav-item">All Authors</Link>
+        <Link to="/Authors" className="nav-item">All Authors</Link>
         <Link to="/contact" className="nav-item">Contact</Link>
 
         <form className="search-form" onSubmit={handleSearch}>
